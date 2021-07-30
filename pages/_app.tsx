@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { ThemeProvider, StylesProvider, jssPreset } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -8,8 +7,6 @@ import { create } from 'jss'
 import rtl from 'jss-rtl'
 import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
-
-const e = 'asdasd'
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 

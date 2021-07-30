@@ -1,9 +1,9 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react'
 import Head from 'next/head'
 import { Typography } from '@material-ui/core'
 import { MAIN_PAGE_TITLE, DESCRIPTION, KEYWORDS } from '../constants'
 
-export default function About() {
+export default function About(): React.ReactElement {
   return (
     <>
       <Head>
