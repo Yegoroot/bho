@@ -1,3 +1,92 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".mdx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+
+  "extends": [
+    "next", 
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "airbnb/hooks",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "airbnb",
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off", // react 17
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "prefer-const": "error",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    // "react/prop-types": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 130
+      }
+    ],
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "when": "always"
+      }
+    ],
+    "linebreak-style": "off", // LF or CRLF
+    "semi": [
+      "error",
+      "never"
+    ],
+    "comma-dangle": "off",
+    "import/no-unresolved": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-console": "off",
+    "no-plusplus": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
+
+
+
 }

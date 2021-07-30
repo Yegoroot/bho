@@ -1,23 +1,34 @@
+import React from 'react'
 import Head from 'next/head'
+import { Typography } from '@material-ui/core'
+import { MAIN_PAGE_TITLE, DESCRIPTION, KEYWORDS } from '../constants'
 
-const keywords = "asdasda asd asd asd asd asd" // FIXME
-const description = "descriptiondescriptiondescriptiondescription" //FIXME
-
-export default function About() {
+export default function About(): React.ReactElement {
   return (
     <>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords} />
-        <link rel="icon" href="/favicon.ico" />
+        <title>{MAIN_PAGE_TITLE}</title>
+        <meta
+          name="description"
+          content={DESCRIPTION}
+        />
+        <meta
+          name="keywords"
+          content={KEYWORDS}
+        />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+        />
       </Head>
+      <Typography> sdfsdf </Typography>
 
+      <h1>
+        Welcome to
+        {' '}
+        <a href="https://nextjs.org">Next.js!</a>
+      </h1>
 
-        <h1>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        
     </>
   )
 }
