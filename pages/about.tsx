@@ -1,9 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
-import { Typography } from '@material-ui/core'
+import styles from '../styles/Home.module.css'
 import { MAIN_PAGE_TITLE, DESCRIPTION, KEYWORDS } from '../constants'
+import useTranslation from 'next-translate/useTranslation';
 
 export default function About(): React.ReactElement {
+  const { t } = useTranslation()
   return (
     <>
       <Head>
@@ -21,13 +23,12 @@ export default function About(): React.ReactElement {
           href="/favicon.ico"
         />
       </Head>
-      <Typography> sdfsdf </Typography>
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          {t('common:about')}
+        </h1>
 
-      <h1>
-        Welcome to
-        {' '}
-        <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      </main>
 
     </>
   )
