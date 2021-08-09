@@ -18,10 +18,9 @@ import Toolbar from '@material-ui/core/Toolbar'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
-import { Slide, Button, } from '@material-ui/core'
-import Link from 'next/link'
-
+import { Slide, } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
+import MainMenu from './components/Menu'
 
 interface Props {
   window?: () => Window;
@@ -48,42 +47,30 @@ function HideOnScroll(props: Props) {
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
-  button: {
-    margin: theme.spacing(1),
-    color: theme.palette.background.default
-  },
   footer: {
     background: theme.palette.primary.main,
     padding: 20,
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     color: theme.palette.background.default
+  },
+  changeLanguage: {
+    marginLeft: 'auto'
   }
 }))
 
-const AppBarLayout = ({ children, ...props }: PropsLayout) => {
+const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement => {
   const classes = useStyles()
   return (
     <>
       <HideOnScroll {...props}>
         <AppBar>
           <Toolbar>
-            <Link
-              href="/"
-              passHref
-            >
-              <Button className={classes.button}>
-                Home
-              </Button>
-            </Link>
-            <Link
-              href="/about"
-              passHref
-            >
-              <Button className={classes.button}>
-                About
-              </Button>
-            </Link>
+
+            <MainMenu />
+            <div className={classes.changeLanguage}>
+              en / ru
+            </div>
 
           </Toolbar>
         </AppBar>

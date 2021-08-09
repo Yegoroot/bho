@@ -7,12 +7,11 @@ import { create } from 'jss'
 import rtl from 'jss-rtl'
 import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
-import Main from './Layouts/Main';
-
+import Main from './Layouts/Main'
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -34,7 +33,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Main>
-            <Component {...pageProps} />
+              <Component {...pageProps} />
             </Main>
           </StylesProvider>
         </ThemeProvider>
