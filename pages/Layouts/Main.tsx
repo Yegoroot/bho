@@ -1,17 +1,4 @@
-// import React from 'react'
-// import Image from 'next/image'
-
-// export const getStaticProps = async ({ params, locale }) => {
-//   const { slug } = params
-
-//   const id = slug.match(/\d{3}/)[0] // fails, because slug is undefined
-
-//   return {
-//     props: { slug, id, locale },
-//     revalidate: 1,
-//   }
-// }
-
+import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -21,6 +8,7 @@ import Container from '@material-ui/core/Container'
 import { Slide, } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import MainMenu from './components/Menu'
+import ChangeLanguage from './components/ChangeLanguage'
 
 interface Props {
   window?: () => Window;
@@ -61,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement => {
   const classes = useStyles()
+  const { lang } = useTranslation()
   return (
     <>
       <HideOnScroll {...props}>
@@ -69,7 +58,7 @@ const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement =
 
             <MainMenu />
             <div className={classes.changeLanguage}>
-              en / ru
+              <ChangeLanguage />
             </div>
 
           </Toolbar>

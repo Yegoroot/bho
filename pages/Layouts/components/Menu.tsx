@@ -23,7 +23,7 @@ const MainMenu = () :React.ReactElement => {
       >
         <Button className={classes.button}>
 
-          {t('common:about')}
+          {t('common:home')}
         </Button>
       </Link>
       <Link
@@ -31,7 +31,7 @@ const MainMenu = () :React.ReactElement => {
         passHref
       >
         <Button className={classes.button}>
-          About
+          {t('common:about')}
         </Button>
       </Link>
       <Link
