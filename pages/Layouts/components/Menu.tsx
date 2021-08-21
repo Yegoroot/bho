@@ -39,7 +39,7 @@ const MainMenu = () :React.ReactElement => {
         passHref
       >
         <Button className={classes.button}>
-          News
+          {t('common:news')}
         </Button>
       </Link>
       <Link
@@ -47,7 +47,7 @@ const MainMenu = () :React.ReactElement => {
         passHref
       >
         <Button className={classes.button}>
-          Contacts
+          {t('common:contacts')}
         </Button>
       </Link>
 

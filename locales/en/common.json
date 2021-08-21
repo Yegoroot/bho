@@ -1,5 +1,7 @@
 {
   "title": "Hello world",
   "home": "Home",
-  "about": "About us"
+  "about": "About us",
+  "news": "News",
+  "contacts": "Contacts"
 }

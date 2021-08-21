@@ -7,4 +7,7 @@ module.exports = {
     locales: ['ar', 'en'],
     defaultLocale: 'ar',
   },
+  env: {
+        mongodburl: "mongodb+srv://rinat-amir:123098zxc@cluster0.nwg0x.mongodb.net/bhodb?retryWrites=true&w=majority",
+  }
 }
