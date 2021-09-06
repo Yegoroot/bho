@@ -3,5 +3,13 @@
   "home": "Home",
   "about": "About us",
   "news": "News",
-  "contacts": "Contacts"
+  "contacts": "Contacts",
+  "auth": "Log in",
+  "name": "Full Name",
+  "email": "Email",
+  "number": "Phone Number",
+  "password":"Password",
+  "biography": "Brief biography",
+  "signup": "Sign Up",
+  "signInTip": "Already have an account? Sign in"
 }

@@ -8,6 +8,7 @@ import Container from '@material-ui/core/Container'
 import { Slide, } from '@material-ui/core'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import MainMenu from './components/Menu'
+import Auth from './components/Auth'
 import ChangeLanguage from './components/ChangeLanguage'
 
 interface Props {
@@ -57,7 +58,10 @@ const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement =
           <Toolbar>
 
             <MainMenu />
+
             <div className={classes.changeLanguage}>
+              <Auth />
+
               <ChangeLanguage />
             </div>
 
