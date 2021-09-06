@@ -44,13 +44,10 @@ export default function SignUp() {
         e.preventDefault()
         console.log(11)
 
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/login', {
             body: JSON.stringify({
-                name,
                 email,
-                number,
                 password,
-                biography,
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -73,20 +70,6 @@ export default function SignUp() {
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <TextField
-                                autoComplete="fname"
-                                name="name"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="name"
-                                onChange={e => setName(e.target.value)}
-                                value={name}
-                                label={t('common:name')}
-                                autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
                                 variant="outlined"
                                 required
                                 fullWidth
@@ -98,19 +81,7 @@ export default function SignUp() {
                                 autoComplete="email"
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="number"
-                                onChange={e => setNumber(e.target.value)}
-                                value={number}
-                                label={t('common:number')}
-                                name="number"
-                                autoComplete="number"
-                            />
-                        </Grid>
+                       
                         <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
@@ -125,18 +96,6 @@ export default function SignUp() {
                                 autoComplete="current-password"
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                id="outlined-multiline-static"
-                                label={t('common:biography')}
-                                fullWidth
-                                multiline
-                                onChange={e => setBiography(e.target.value)}
-                                value={biography}
-                                rows={6}
-                                variant="outlined"
-                            />
-                        </Grid>
                     </Grid>
                     <Button
                         type="submit"
@@ -147,13 +106,6 @@ export default function SignUp() {
                     >
                         {t('common:signup')}
                     </Button>
-                    <Grid container justifyContent="flex-end">
-                        <Grid item>
-                            <Link href="/login" variant="body2">
-                                {t('common:signInTip')}
-                            </Link>
-                        </Grid>
-                    </Grid>
                 </form>
             </div>
         </Container>

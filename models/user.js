@@ -8,16 +8,20 @@ var user = new Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
     required: true
   },
-  since: {
-    type: Date,
-    default: Date.now
-  }
+  number: {
+    type: String,
+    required: true
+  },
+  biography: {
+    type: String
+  },
 });
 
 mongoose.models = {};
