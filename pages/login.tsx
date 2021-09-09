@@ -40,11 +40,11 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [biography, setBiography] = useState("");
 
-    const registerUser = async (e) => {
+    const registerUser = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
         console.log(11)
 
-        const res = await fetch('/api/login', {
+        const res = await fetch('/api/user/auth', {
             body: JSON.stringify({
                 email,
                 password,
