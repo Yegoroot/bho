@@ -1,7 +1,9 @@
-import connectDB from '../../middleware/mongodb';
-import User from '../../models/user';
+import connectDB from '../../../middleware/mongodb';
+import User from '../../../models/user';
 import { NextApiResponse, NextApiRequest } from 'next';
 import { hash } from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { JWT_TOKEN } from '../../../constants';
 
 
 
@@ -21,7 +23,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
         // Create new user
         var userCreated = await user.save();
-        return res.status(200).send(userCreated);
+        const token = jwt.sign({ sub: userCreated._id }, JWT_TOKEN, { expiresIn: '7d' });
+        return res.status(200).send({...userCreated, token});
       } catch (error: any) {
         return res.status(500).send(error.message);
       }

@@ -22,6 +22,10 @@ var user = new Schema({
   biography: {
     type: String
   },
+  isAdmin: {
+    type: Boolean,
+    default: false
+  }
 });
 
 mongoose.models = {};

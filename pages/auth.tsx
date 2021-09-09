@@ -3,7 +3,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import useTranslation from 'next-translate/useTranslation'
@@ -40,11 +39,11 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [biography, setBiography] = useState("");
 
-    const registerUser = async (e) => {
+    const registerUser = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
         console.log(11)
 
-        const res = await fetch('/api/user', {
+        const res = await fetch('/api/user/registr', {
             body: JSON.stringify({
                 name,
                 email,
