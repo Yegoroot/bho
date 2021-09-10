@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { email, password } = req.body;
     if (email) {
       try {
-        var user = User.find({email});
+        var user = await User.findOne({email}).lean();
         // Create new user
         if (!user) throw 'Username or password is incorrect';
         let passComapred = await bcrypt.compare(password, user.password)

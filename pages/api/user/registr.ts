@@ -14,7 +14,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (name && email && password) {
       const hashedPassword = await hash(password, 10);
       try {
-        var user = new User({
+        var alreadyExists = await User.findOne({email}).lean();
+        // Create new user
+        if (alreadyExists) throw 'User already exists';
+        var userNew = new User({
           name,
           email,
           password: hashedPassword,
@@ -22,11 +25,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           biography
         });
         // Create new user
-        var userCreated = await user.save();
+        var userCreated = await userNew.save();
         const token = jwt.sign({ sub: userCreated._id }, JWT_TOKEN, { expiresIn: '7d' });
-        return res.status(200).send({...userCreated, token});
+        let user = {...userCreated._doc, token}
+        return res.status(200).json(user);
       } catch (error: any) {
-        return res.status(500).send(error.message);
+        return res.status(500).json(error);
       }
     } else {
       res.status(422).send('data_incomplete');

@@ -7,7 +7,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import useTranslation from 'next-translate/useTranslation'
 import { useState } from 'react';
+import Router from 'next/router'
+import { NextApiResponse } from 'next';
 
+// interface IUserResponse extends NextApiResponse {
+//     user: any
+// }
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -41,9 +46,8 @@ export default function SignUp() {
 
     const registerUser = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-        console.log(11)
 
-        const res = await fetch('/api/user/registr', {
+        const res: NextApiResponse = await fetch('/api/user/registr', {
             body: JSON.stringify({
                 name,
                 email,
@@ -56,10 +60,14 @@ export default function SignUp() {
             },
             method: 'POST'
         })
-
-        const result = await res.json()
+        let resData: any = await res.json()
         debugger
-        console.log(result)
+        if (res.ok && resData.token) {
+            localStorage.setItem('login', 'true');
+            localStorage.setItem('token', resData.token);
+            console.log(1)
+            Router.push('/')
+        }
     }
 
     return (

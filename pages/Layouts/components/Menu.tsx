@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { Button, } from '@material-ui/core'
 import Link from 'next/link'
 import { makeStyles, Theme } from '@material-ui/core/styles'
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
   button: {
@@ -14,6 +14,16 @@ const useStyles = makeStyles((theme: Theme) => ({
 const MainMenu = () :React.ReactElement => {
   const { t } = useTranslation()
   const classes = useStyles()
+
+  const [isLogined, setSetIsLogined] = useState(false);
+  useEffect(() => {
+    window.addEventListener("storage", () => {
+      console.log(111)
+      let isLogin = JSON.parse(localStorage.getItem('login'))
+
+      setSetIsLogined(isLogin)
+    });
+  });
   return (
 
     <>
@@ -50,7 +60,16 @@ const MainMenu = () :React.ReactElement => {
           {t('common:contacts')}
         </Button>
       </Link>
-
+      {
+        !isLogined || <Link
+          href="/admin"
+          passHref
+        >
+          <Button className={classes.button}>
+            {t('common:admin_room')}
+          </Button>
+        </Link>
+      }
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import Router from 'next/router'
@@ -17,9 +17,29 @@ export default function Auth() {
   const { t } = useTranslation()
   const classes = useStyles()
 
+  const [isLogined, setSetIsLogined] = useState(false);
+
+  useEffect(() => {
+    let isLogin = JSON.parse(localStorage.getItem('login'))
+
+    setSetIsLogined(isLogin)
+  });
+
+  const logUot = () => {
+    localStorage.setItem('login', 'false')
+  }
+
   return (
-    <>
-      <Link
+    <> {
+      isLogined ? <Link
+        href="/"
+        passHref
+      >
+        <Button onClick={logUot} className={classes.button}>
+
+          {t('common:logout')}
+        </Button>
+      </Link> : <Link
         href="/auth"
         passHref
       >
@@ -28,6 +48,7 @@ export default function Auth() {
           {t('common:auth')}
         </Button>
       </Link>
+}
     </>
   )
 }

@@ -34,15 +34,11 @@ export default function SignUp() {
     const classes = useStyles();
     const { t } = useTranslation()
 
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [number, setNumber] = useState("");
     const [password, setPassword] = useState("");
-    const [biography, setBiography] = useState("");
 
-    const registerUser = async (e: { preventDefault: () => void; }) => {
+    const loginUser = async (e: { preventDefault: () => void; }) => {
         e.preventDefault()
-        console.log(11)
 
         const res = await fetch('/api/user/auth', {
             body: JSON.stringify({
@@ -54,6 +50,7 @@ export default function SignUp() {
             },
             method: 'POST'
         })
+        debugger
 
         const result = await res.json()
         debugger
@@ -65,7 +62,7 @@ export default function SignUp() {
             <CssBaseline />
             <div className={classes.paper}>
                 <form className={classes.form}
-                    onSubmit={registerUser}
+                    onSubmit={loginUser}
                     noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
@@ -95,6 +92,13 @@ export default function SignUp() {
                                 id="password"
                                 autoComplete="current-password"
                             />
+                        </Grid>
+                    </Grid>
+                    <Grid container justifyContent="flex-end">
+                        <Grid item>
+                            <Link href="/auth" variant="body2">
+                                {t('common:signup')}
+                            </Link>
                         </Grid>
                     </Grid>
                     <Button
