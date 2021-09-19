@@ -2,8 +2,8 @@ import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { makeStyles, Theme } from '@material-ui/core/styles'
-// import styles from '../styles/Home.module.css'
 import { Typography } from '@material-ui/core'
+import OurServices from './components/MainPage/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
@@ -36,23 +36,27 @@ export default function Home() {
         />
       </Head>
 
-      <main className={classes.main}>
+      <main>
 
-        <div>
-          <Typography variant="h1">
-            {t('common:title')}
-          </Typography>
-          <Typography variant="subtitle1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Inventore distinctio rerum necessitatibus itaque tempore harum quidem quos culpa!
-            Odit aut accusamus at cum molestias saepe sint placeat natus omnis eos.
-          </Typography>
+        <div className={classes.main}>
+
+          <div>
+            <Typography variant="h1">
+              {t('common:title')}
+            </Typography>
+            <Typography variant="subtitle1">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Inventore distinctio rerum necessitatibus itaque tempore harum quidem quos culpa!
+              Odit aut accusamus at cum molestias saepe sint placeat natus omnis eos.
+            </Typography>
+          </div>
+
+          <Image
+            src={homeImage}
+            alt={MAIN_PAGE_TITLE}
+          />
         </div>
-
-        <Image
-          src={homeImage}
-          alt={MAIN_PAGE_TITLE}
-        />
+        <OurServices />
 
       </main>
 
