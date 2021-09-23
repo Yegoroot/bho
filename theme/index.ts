@@ -7,7 +7,7 @@ const theme = createTheme({
   direction: DIRECTION,
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#17414e',
     },
     secondary: {
       main: '#19857b',
@@ -19,8 +19,8 @@ const theme = createTheme({
       default: '#fff',
     },
     text: {
-      primary: '#000'
-    }
+      primary: '#000',
+    },
   },
 })
 
