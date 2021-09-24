@@ -1,4 +1,4 @@
-import useTranslation from 'next-translate/useTranslation'
+// import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement => {
   const classes = useStyles()
-  const { lang } = useTranslation()
+  // const { lang } = useTranslation()
   return (
     <>
       <HideOnScroll {...props}>

@@ -4,7 +4,8 @@ import Document, {
 } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import theme from '../theme'
-import { DEFAULT_LANG, DIRECTION } from '../constants'
+import { DIRECTION } from '../constants'
+import { DEFAULT_LANG } from '../i18Constants'
 
 export default class MyDocument extends Document {
   render() {

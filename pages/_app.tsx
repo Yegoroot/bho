@@ -7,7 +7,7 @@ import { create } from 'jss'
 import rtl from 'jss-rtl'
 import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
-import Main from './Layouts/Main'
+import MainLayout from './Layouts/Main'
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
 
@@ -32,9 +32,9 @@ export default function MyApp({ Component, pageProps }: AppProps): React.ReactEl
           <StylesProvider jss={jss}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Main>
+            <MainLayout>
               <Component {...pageProps} />
-            </Main>
+            </MainLayout>
           </StylesProvider>
         </ThemeProvider>
       </body>
