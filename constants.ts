@@ -1,4 +1,3 @@
-export const DEFAULT_LANG = 'en'
 export const MAIN_PAGE_TITLE = 'منظمة برانا حنبنيهو الشبابية لدعم التعليم'
 export const KEYWORDS = 'asdasda asd asd asd asd asd'
 export const DESCRIPTION = 'descriptiondescriptiondescriptiondescription'

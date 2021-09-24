@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import { makeStyles, Theme } from '@material-ui/core/styles'
 import Router from 'next/router'
-import { DEFAULT_LANG } from '../../../constants'
+import { DEFAULT_LANG, locales } from '../../../i18Constants'
 
 export default function SimpleMenu() {
   const useStyles = makeStyles((theme: Theme) => ({
@@ -49,8 +49,15 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => setLang('ar')}>AR</MenuItem>
-        <MenuItem onClick={() => setLang('en')}>EN</MenuItem>
+        {locales.map((locale) => (
+          <MenuItem
+            key={locale}
+            onClick={() => setLang(locale)}
+          >
+            {locale.toLocaleUpperCase()}
+          </MenuItem>
+        ))}
+
       </Menu>
     </>
   )

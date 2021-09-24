@@ -23,7 +23,7 @@ const MainMenu = () :React.ReactElement => {
       >
         <Button className={classes.button}>
 
-          {t('common:home')}
+          {t('menu:home')}
         </Button>
       </Link>
       <Link
@@ -31,10 +31,10 @@ const MainMenu = () :React.ReactElement => {
         passHref
       >
         <Button className={classes.button}>
-          {t('common:about')}
+          {t('menu:about')}
         </Button>
       </Link>
-      <Link
+      {/* <Link
         href="/news"
         passHref
       >
@@ -49,7 +49,7 @@ const MainMenu = () :React.ReactElement => {
         <Button className={classes.button}>
           Contacts
         </Button>
-      </Link>
+      </Link> */}
 
     </>
   )
