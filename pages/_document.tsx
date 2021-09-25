@@ -2,7 +2,7 @@ import React from 'react'
 import Document, {
   Html, Head, Main, NextScript
 } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/core/styles'
+import { ServerStyleSheets } from '@mui/styles'
 import theme from '../theme'
 import { DIRECTION } from '../constants'
 import { DEFAULT_LANG } from '../i18Constants'

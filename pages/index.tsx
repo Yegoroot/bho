@@ -1,18 +1,18 @@
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import { makeStyles, Theme } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, Theme } from '@mui/material'
 import OurServices from './components/MainPage/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
 const useStyles = makeStyles((theme: Theme) => ({
 
-  main: {
+  maint: {
     display: 'flex',
     marginTop: '10%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column'
     }
   },
@@ -38,7 +38,7 @@ export default function Home() {
 
       <main>
 
-        <div className={classes.main}>
+        <div className={classes.maint}>
 
           <div>
             <Typography variant="h1">

@@ -1,8 +1,9 @@
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles, Theme } from '@mui/styles'
 
+// @ts-ignore
 const OurServices = () => {
   const useStyles = makeStyles((theme: Theme) => ({
-    root: {
+    rtt: {
       background: theme.palette.primary.main,
 
     }
@@ -11,8 +12,10 @@ const OurServices = () => {
   const styles = useStyles()
 
   return (
-    <div className={styles.root}>
+    <div className={styles.rtt}>
       --OurService
+      --OurService
+
     </div>
   )
 }

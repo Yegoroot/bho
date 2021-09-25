@@ -1,6 +1,6 @@
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material'
 
-import { red } from '@material-ui/core/colors'
+import { red } from '@mui/material/colors'
 import { DIRECTION } from '../constants'
 
 type PaletteMode = 'dark' | 'light'
@@ -8,7 +8,7 @@ type PaletteMode = 'dark' | 'light'
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
     mode,
-    ...(mode === 'light'
+    ...(mode === 'dark'
       ? {
         primary: {
           main: '#17414e',
@@ -28,7 +28,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
       }
       : {
         primary: {
-          main: '#17414e',
+          main: '#fff',
         },
         secondary: {
           main: '#19857b',
@@ -37,7 +37,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
           main: red.A400,
         },
         background: {
-          default: '#fff',
+          default: '#17414e',
         },
         text: {
           primary: '#000',

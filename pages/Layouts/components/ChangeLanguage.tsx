@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Button from '@material-ui/core/Button'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import Button from '@mui/material/Button'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import { makeStyles, Theme } from '@mui/styles'
 import Router from 'next/router'
 import { DEFAULT_LANG, locales } from '../../../i18Constants'
 

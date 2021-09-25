@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
-import { Button, } from '@material-ui/core'
+import { Button, Theme } from '@mui/material'
 import Link from 'next/link'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import React from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({

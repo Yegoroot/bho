@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider, StylesProvider, jssPreset } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider, StylesProvider, jssPreset } from '@mui/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 import type { AppProps } from 'next/app'
 import { create } from 'jss'
 import rtl from 'jss-rtl'
@@ -28,15 +28,17 @@ export default function MyApp({ Component, pageProps }: AppProps): React.ReactEl
         />
       </Head>
       <body dir={DIRECTION}>
-        <ThemeProvider theme={theme}>
-          <StylesProvider jss={jss}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <MainLayout>
-              <Component {...pageProps} />
-            </MainLayout>
-          </StylesProvider>
-        </ThemeProvider>
+        <div>
+          <ThemeProvider theme={theme}>
+            <StylesProvider jss={jss}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <MainLayout>
+                <Component {...pageProps} />
+              </MainLayout>
+            </StylesProvider>
+          </ThemeProvider>
+        </div>
       </body>
     </>
   )

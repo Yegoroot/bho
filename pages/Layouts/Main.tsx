@@ -1,12 +1,13 @@
 // import useTranslation from 'next-translate/useTranslation'
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
-import { Slide, } from '@material-ui/core'
-import { makeStyles, Theme } from '@material-ui/core/styles'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import useScrollTrigger from '@mui/material/useScrollTrigger'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import { Slide, Theme } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+
 import MainMenu from './components/Menu'
 import ChangeLanguage from './components/ChangeLanguage'
 
@@ -35,6 +36,9 @@ function HideOnScroll(props: Props) {
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
+  toolbar: {
+    background: theme.palette.primary.main,
+  },
   footer: {
     background: theme.palette.primary.main,
     padding: 20,
@@ -54,7 +58,7 @@ const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement =
     <>
       <HideOnScroll {...props}>
         <AppBar>
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
 
             <MainMenu />
             <div className={classes.changeLanguage}>
