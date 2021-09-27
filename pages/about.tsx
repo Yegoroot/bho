@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
-import styles from '../styles/Home.module.css'
+
 import { MAIN_PAGE_TITLE, DESCRIPTION, KEYWORDS } from '../constants'
 
 export default function About(): React.ReactElement {
@@ -23,8 +23,8 @@ export default function About(): React.ReactElement {
           href="/favicon.ico"
         />
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <main>
+        <h1>
           {t('common:about')}
         </h1>
 

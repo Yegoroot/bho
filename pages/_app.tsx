@@ -7,6 +7,7 @@ import { create } from 'jss'
 import rtl from 'jss-rtl'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import jssTemplate from 'jss-plugin-template'
+import '../theme/styles.css'
 
 import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
@@ -33,6 +34,7 @@ export default function MyApp(props: MyAppProps): React.ReactElement {
 
   return (
     <CacheProvider value={emotionCache}>
+
       <Head>
         <title>{MAIN_PAGE_TITLE}</title>
         <meta
@@ -40,19 +42,21 @@ export default function MyApp(props: MyAppProps): React.ReactElement {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
+
       <body dir={DIRECTION}>
-        <div>
-          <ThemeProvider theme={theme}>
-            <StylesProvider jss={jss}>
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-              <CssBaseline />
-              <MainLayout>
-                <Component {...pageProps} />
-              </MainLayout>
-            </StylesProvider>
-          </ThemeProvider>
-        </div>
+
+        <ThemeProvider theme={theme}>
+          <StylesProvider jss={jss}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <MainLayout>
+              <Component {...pageProps} />
+            </MainLayout>
+          </StylesProvider>
+        </ThemeProvider>
+
       </body>
+
     </CacheProvider>
   )
 }
