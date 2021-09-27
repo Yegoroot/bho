@@ -5,21 +5,34 @@ import CssBaseline from '@mui/material/CssBaseline'
 import type { AppProps } from 'next/app'
 import { create } from 'jss'
 import rtl from 'jss-rtl'
+import { CacheProvider, EmotionCache } from '@emotion/react'
+import jssTemplate from 'jss-plugin-template'
+
 import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
 import MainLayout from './Layouts/Main'
+import createEmotionCache from '../src/createEmotionCache'
 
-const jss = create({ plugins: [...jssPreset().plugins, rtl()] })
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache()
 
-export default function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+const jss = create({ plugins: [jssTemplate(), ...jssPreset().plugins, rtl()] })
+
+export default function MyApp(props: MyAppProps): React.ReactElement {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     jssStyles?.parentElement?.removeChild(jssStyles)
   }, [])
 
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>{MAIN_PAGE_TITLE}</title>
         <meta
@@ -40,6 +53,6 @@ export default function MyApp({ Component, pageProps }: AppProps): React.ReactEl
           </ThemeProvider>
         </div>
       </body>
-    </>
+    </CacheProvider>
   )
 }
