@@ -4,15 +4,14 @@ import Link from 'next/link'
 import { makeStyles } from '@mui/styles'
 import React from 'react'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  button: {
-    margin: theme.spacing(1),
-    color: theme.palette.background.default
-  },
-}))
-
 const MainMenu = () :React.ReactElement => {
   const { t } = useTranslation()
+  const useStyles = makeStyles((theme: Theme) => ({
+    button: {
+      margin: theme.spacing(1),
+      color: theme.palette.background.default
+    },
+  }))
   const classes = useStyles()
   return (
 

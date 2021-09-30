@@ -7,19 +7,18 @@ import OurServices from './components/MainPage/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
-const useStyles = makeStyles((theme: Theme) => ({
-
-  maint: {
-    display: 'flex',
-    marginTop: '10%',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
-    }
-  },
-
-}))
-
 export default function Home() {
+  const useStyles = makeStyles((theme: Theme) => ({
+
+    maint: {
+      display: 'flex',
+      marginTop: '10%',
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column'
+      }
+    },
+
+  }))
   const { t } = useTranslation()
   const classes = useStyles()
   return (

@@ -1,4 +1,5 @@
-import { makeStyles, Theme } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
+import { Theme } from '@mui/material'
 
 // @ts-ignore
 const OurServices = () => {

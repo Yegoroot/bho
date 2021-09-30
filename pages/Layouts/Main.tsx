@@ -35,23 +35,22 @@ function HideOnScroll(props: Props) {
   )
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  toolbar: {
-    background: theme.palette.primary.main,
-  },
-  footer: {
-    background: theme.palette.primary.main,
-    padding: 20,
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-    color: theme.palette.background.default
-  },
-  changeLanguage: {
-    marginLeft: 'auto'
-  }
-}))
-
 const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement => {
+  const useStyles = makeStyles((theme: Theme) => ({
+    toolbar: {
+      background: theme.palette.primary.main,
+    },
+    footer: {
+      background: theme.palette.primary.main,
+      padding: 20,
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      color: theme.palette.background.default
+    },
+    changeLanguage: {
+      marginLeft: 'auto'
+    }
+  }))
   const classes = useStyles()
   // const { lang } = useTranslation()
   return (

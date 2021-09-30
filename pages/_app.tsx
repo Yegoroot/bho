@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { ThemeProvider, StylesProvider, jssPreset } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import type { AppProps } from 'next/app'
@@ -9,7 +8,6 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import jssTemplate from 'jss-plugin-template'
 import '../theme/styles.css'
 
-import { MAIN_PAGE_TITLE, DIRECTION } from '../constants'
 import theme from '../theme'
 import MainLayout from './Layouts/Main'
 import createEmotionCache from '../src/createEmotionCache'
@@ -24,27 +22,22 @@ interface MyAppProps extends AppProps {
 const jss = create({ plugins: [jssTemplate(), ...jssPreset().plugins, rtl()] })
 
 export default function MyApp(props: MyAppProps): React.ReactElement {
+  const [isExist, setIsExist] = React.useState(false)
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     jssStyles?.parentElement?.removeChild(jssStyles)
+    const isExistBody = document.querySelector('body')
+    setIsExist(!!isExistBody)
+    console.log('isBody', isExist)
+    // console.log('body', isExist)
   }, [])
 
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
   return (
     <CacheProvider value={emotionCache}>
-
-      <Head>
-        <title>{MAIN_PAGE_TITLE}</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
-      </Head>
-
-      <body dir={DIRECTION}>
-
+      <main>
         <ThemeProvider theme={theme}>
           <StylesProvider jss={jss}>
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -54,9 +47,7 @@ export default function MyApp(props: MyAppProps): React.ReactElement {
             </MainLayout>
           </StylesProvider>
         </ThemeProvider>
-
-      </body>
-
+      </main>
     </CacheProvider>
   )
 }

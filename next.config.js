@@ -3,7 +3,7 @@ const constants = require('./i18Constants')
 
 module.exports = {
   ...nextTranslate(),
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: constants.locales,
     defaultLocale: constants.DEFAULT_LANG,
