@@ -2,21 +2,13 @@ import React, { useState } from 'react'
 import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { makeStyles } from '@mui/styles'
-import { Theme } from '@mui/material'
+import styled from 'styled-components'
+
 import Router from 'next/router'
 import { DEFAULT_LANG, locales } from '../../../i18Constants'
 
-export default function SimpleMenu() {
-  const useStyles = makeStyles((theme: Theme) => ({
-    btn: {
-      color: theme.palette.background.default
-    },
-  }))
-
+function SimpleMenu() {
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANG)
-
-  const classes = useStyles()
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
@@ -35,12 +27,12 @@ export default function SimpleMenu() {
   }
 
   return (
-    <>
+    <div>
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
-        className={classes.btn}
+        color="primary"
       >
         {currentLang}
       </Button>
@@ -60,6 +52,11 @@ export default function SimpleMenu() {
         ))}
 
       </Menu>
-    </>
+    </div>
   )
 }
+
+export default styled(SimpleMenu)`
+margin-left: auto;
+color: red !important;
+`

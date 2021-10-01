@@ -1,26 +1,14 @@
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import { makeStyles } from '@mui/styles'
-import { Typography, Theme } from '@mui/material'
+import { Typography } from '@mui/material'
 import OurServices from './components/MainPage/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
 export default function Home() {
-  const useStyles = makeStyles((theme: Theme) => ({
-
-    maint: {
-      display: 'flex',
-      marginTop: '10%',
-      [theme.breakpoints.down('sm')]: {
-        flexDirection: 'column'
-      }
-    },
-
-  }))
   const { t } = useTranslation()
-  const classes = useStyles()
+
   return (
     <div>
       <Head>
@@ -37,7 +25,7 @@ export default function Home() {
 
       <main>
 
-        <div className={classes.maint}>
+        <div>
 
           <div>
             <Typography variant="h1">
@@ -61,4 +49,12 @@ export default function Home() {
 
     </div>
   )
+}
+
+export async function getServerSideProps(context) {
+  const { API_URL } = process.env
+  console.log('api', API_URL)
+  return {
+    props: {}, // will be passed to the page component as props
+  }
 }

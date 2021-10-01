@@ -6,7 +6,8 @@ const OurServices = () => {
   const useStyles = makeStyles((theme: Theme) => ({
     rtt: {
       background: theme.palette.primary.main,
-
+      color: theme.palette.primary.contrastText,
+      padding: theme.spacing(2)
     }
   }))
 

@@ -1,26 +1,18 @@
 import useTranslation from 'next-translate/useTranslation'
-import { Button, Theme } from '@mui/material'
+import { Button } from '@mui/material'
 import Link from 'next/link'
-import { makeStyles } from '@mui/styles'
 import React from 'react'
 
 const MainMenu = () :React.ReactElement => {
   const { t } = useTranslation()
-  const useStyles = makeStyles((theme: Theme) => ({
-    button: {
-      margin: theme.spacing(1),
-      color: theme.palette.background.default
-    },
-  }))
-  const classes = useStyles()
-  return (
 
+  return (
     <>
       <Link
         href="/"
         passHref
       >
-        <Button className={classes.button}>
+        <Button color="primary">
 
           {t('menu:home')}
         </Button>
@@ -29,27 +21,10 @@ const MainMenu = () :React.ReactElement => {
         href="/about"
         passHref
       >
-        <Button className={classes.button}>
+        <Button color="primary">
           {t('menu:about')}
         </Button>
       </Link>
-      {/* <Link
-        href="/news"
-        passHref
-      >
-        <Button className={classes.button}>
-          News
-        </Button>
-      </Link>
-      <Link
-        href="/contacts"
-        passHref
-      >
-        <Button className={classes.button}>
-          Contacts
-        </Button>
-      </Link> */}
-
     </>
   )
 }
