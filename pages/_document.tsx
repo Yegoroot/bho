@@ -11,7 +11,7 @@ import { DEFAULT_LANG } from '../i18Constants'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang={DEFAULT_LANG}>
+      <Html lang={DEFAULT_LANG && 'ru'}>
         <Head>
           {/* PWA primary color */}
           <meta

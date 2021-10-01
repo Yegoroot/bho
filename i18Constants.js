@@ -1,4 +1,5 @@
-const locales = ['ru', 'ar', 'en']
+const locales = ['ar', 'ru', 'en']
+
 const DEFAULT_LANG = 'ru'
 
 module.exports = {
