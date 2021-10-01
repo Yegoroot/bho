@@ -8,24 +8,21 @@ const constants = require('./i18Constants')
 
 require('dotenv').config()
 
-module.exports = nextTranslate({
-
-  ...withTM({
-    env: {
-      API_URL: process.env.API_URL
-    },
-    reactStrictMode: true,
-
-    webpack: (config) => {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        '@mui/styled-engine': '@mui/styled-engine-sc',
-      }
-      return config
-    },
-  }),
+module.exports = nextTranslate(withTM({
+  reactStrictMode: true,
   i18n: {
     locales: constants.locales,
     defaultLocale: constants.DEFAULT_LANG,
+    localeDetection: false
   },
-})
+  env: {
+    API_URL: process.env.API_URL
+  },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@mui/styled-engine': '@mui/styled-engine-sc',
+    }
+    return config
+  },
+}))
