@@ -6,7 +6,7 @@ import Head from 'next/head'
 import MainLayout from './Layouts/Main'
 import theme from '../theme'
 
-export default ((props: AppProps) => {
+const App = ((props: AppProps) => {
   const { Component, pageProps } = props
   return (
     <>
@@ -30,3 +30,5 @@ export default ((props: AppProps) => {
     </>
   )
 })
+
+export default App

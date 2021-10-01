@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import Button from '@mui/material/Button'
-import Menu from '@mui/material/Menu'
+import { Menu as MaterialMenu, Box, } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
-import styled from 'styled-components'
 
 import Router from 'next/router'
 import { DEFAULT_LANG, locales } from '../../../i18Constants'
 
-function SimpleMenu() {
+const Menu = () => {
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANG)
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -27,7 +26,10 @@ function SimpleMenu() {
   }
 
   return (
-    <div>
+    <Box sx={{
+      marginLeft: 'auto'
+    }}
+    >
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
@@ -36,7 +38,7 @@ function SimpleMenu() {
       >
         {currentLang}
       </Button>
-      <Menu
+      <MaterialMenu
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
@@ -51,12 +53,9 @@ function SimpleMenu() {
           </MenuItem>
         ))}
 
-      </Menu>
-    </div>
+      </MaterialMenu>
+    </Box>
   )
 }
 
-export default styled(SimpleMenu)`
-margin-left: auto;
-color: red !important;
-`
+export default Menu
