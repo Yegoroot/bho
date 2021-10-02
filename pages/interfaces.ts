@@ -8,37 +8,32 @@ export interface Lang {
 
 export type BaseProps = Lang
 
+type BaseContent = DateRecord & ContentBase
+
 type DateRecord = {
   published_at: Date;
   created_at: Date;
   updated_at: Date;
 }
 
-export interface TypeArticle extends DateRecord {
+type ContentBase = {
   id: number
   title: string;
   description: string
 }
 
-export interface Article extends DateRecord {
-  id: number;
-  title: string;
-  description: string;
+export type TypeArticle = BaseContent
+
+export interface Article extends BaseContent {
   category: null | Category
   type: null | TypeArticle
 }
 
-export interface Category extends DateRecord {
-  id: number;
-  title: string;
-  description: string;
+export interface Category extends BaseContent {
   section: null | Section
   articles: Article[]
 }
 
-export interface Section extends DateRecord {
-  id: number;
-  title: string;
-  description: string;
+export interface Section extends BaseContent {
   categories: Category[]
 }
