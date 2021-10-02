@@ -41,7 +41,7 @@ export default function Home(props: Props) {
           gap: 3,
           gridTemplateColumns: {
             xs: '1fr',
-            lg: '1fr 1fr'
+            lg: '1fr minmax(auto, 450px)'
           },
         }}
         >

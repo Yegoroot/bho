@@ -3,8 +3,8 @@ import Document, {
   Html, Head, Main, NextScript
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import theme from '../theme'
 import { DIRECTION } from 'src/constants'
+import theme from '../theme'
 import { DEFAULT_LANG } from '../i18Constants'
 
 // https://mui.com/styles/advanced/#next-js
