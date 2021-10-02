@@ -1,18 +1,24 @@
 import React from 'react'
 import Head from 'next/head'
-import useTranslation from 'next-translate/useTranslation'
 
-import { MAIN_PAGE_TITLE, DESCRIPTION, KEYWORDS } from '../constants'
+import { BaseProps, About as AboutProps } from './interfaces'
+import { KEYWORDS } from '../constants'
 
-export default function About(): React.ReactElement {
-  const { t } = useTranslation()
+interface Props extends BaseProps {
+  about: AboutProps
+}
+
+export default function About(props: Props): React.ReactElement {
+  const { about } = props
+
+  console.log(about, 'about props')
   return (
     <>
       <Head>
-        <title>{MAIN_PAGE_TITLE}</title>
+        <title>{about.title}</title>
         <meta
           name="description"
-          content={DESCRIPTION}
+          content={about.description}
         />
         <meta
           name="keywords"
@@ -25,11 +31,26 @@ export default function About(): React.ReactElement {
       </Head>
       <main>
         <h1>
-          {t('common:about')}
+          {about.title}
         </h1>
-
+        <div>
+          {about.text}
+        </div>
       </main>
 
     </>
   )
+}
+
+export async function getStaticProps() {
+  const { API_URL } = process.env
+
+  const res = await fetch(`${API_URL}/about`)
+  const about: AboutProps = await res.json()
+
+  return {
+    props: {
+      about
+    },
+  }
 }

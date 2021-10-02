@@ -68,7 +68,7 @@ export async function getServerSideProps(context) {
   const { API_URL } = process.env
 
   const res = await fetch(`${API_URL}/sections`)
-  const sections = await res.json()
+  const sections: Section[] = await res.json()
 
   return {
     props: {
