@@ -30,7 +30,7 @@ export default function SectionPage(props: Props): React.ReactElement {
         />
       </Head>
       <main>
-        {sections.map((section) => <span>{section.title}</span>)}
+        {sections.map((section) => <span key={section.id}>{section.title}</span>)}
       </main>
 
     </>
