@@ -6,7 +6,7 @@ import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import getConfig from 'next/config'
 
-import { Section } from '@/pages/interfaces'
+import { Section } from 'src/interfaces'
 import MainLayout from '../layouts/Main'
 import theme from '../theme'
 
@@ -45,7 +45,9 @@ const { publicRuntimeConfig } = getConfig()
 App.getInitialProps = async () => {
   const res = await fetch(`${publicRuntimeConfig.API_URL}/sections`)
   const sections = await res.json()
-  return sections
+  return {
+    sections
+  }
 }
 
 export default App

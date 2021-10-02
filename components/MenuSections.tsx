@@ -1,6 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
-import { Button } from '@mui/material'
-import Link from 'next/link'
+import {
+  Button, Box, Menu, Fade
+} from '@mui/material'
 import React from 'react'
 
 import { Section } from 'src/interfaces'
@@ -11,29 +12,63 @@ interface Props {
 
 const MenuSections = (props: Props) :React.ReactElement => {
   const { t } = useTranslation()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
   const { sections } = props
-  console.log(sections)
+  console.log(sections, 'section')
   return (
-    <>
-      <Link
-        href="/"
-        passHref
-      >
-        <Button color="primary">
+    <Box sx={{
+      marginLeft: 'auto'
+    }}
+    >
 
-          {t('menu:home')}
-        </Button>
-      </Link>
-      <Link
-        href="/about"
-        passHref
+      <Button
+        id="fade-button"
+        aria-controls="fade-menu"
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
       >
-        <Button color="primary">
-          {t('menu:about')}
-        </Button>
-      </Link>
-    </>
+        {t('menu:sections')}
+      </Button>
+      <Menu
+        id="fade-menu"
+        MenuListProps={{
+          'aria-labelledby': 'fade-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+        PaperProps={{
+          style: {
+            width: '68%',
+            left: '30%',
+            top: '60px'
+          },
+        }}
+
+      >
+        <Box sx={{ padding: '20px' }}>
+          {sections.map((section) => (
+            <span
+              key={section.id}
+              style={{ paddingRight: '20px' }}
+            >
+              {section.title}
+            </span>
+          ))}
+        </Box>
+      </Menu>
+
+    </Box>
   )
 }
 

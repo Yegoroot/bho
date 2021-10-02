@@ -12,7 +12,10 @@ const MainMenu = () :React.ReactElement => {
         href="/"
         passHref
       >
-        <Button color="primary">
+        <Button
+          color="primary"
+          style={{ marginRight: '16px' }}
+        >
 
           {t('menu:home')}
         </Button>
