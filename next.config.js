@@ -25,8 +25,9 @@ module.exports = nextTranslate(withTM({
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@/components': path.join(__dirname, 'components'),
-      '@/pages': path.join(__dirname, 'pages'),
+      components: path.join(__dirname, 'components'),
+      src: path.join(__dirname, 'src'),
+      public: path.join(__dirname, 'public'),
       '@mui/styled-engine': '@mui/styled-engine-sc',
     }
     return config

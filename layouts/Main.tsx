@@ -6,8 +6,9 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { Slide } from '@mui/material'
 
-import MainMenu from '@/components/Menu'
-import { Section } from '@/pages/interfaces'
+import MenuMain from 'components/MenuMain'
+import MenuSections from 'components/MenuSections'
+import { Section } from 'src/interfaces'
 
 interface Props {
   window?: () => Window;
@@ -15,7 +16,7 @@ interface Props {
 }
 
 interface PropsLayout {
-  sections: Section
+  sections: Section[]
   children: React.ReactElement;
 }
 
@@ -39,9 +40,8 @@ const AppBarLayout = ({ children, sections, ...props }: PropsLayout): React.Reac
     <HideOnScroll {...props}>
       <AppBar>
         <Toolbar>
-
-          <MainMenu />
-
+          <MenuMain />
+          <MenuSections sections={sections} />
         </Toolbar>
       </AppBar>
     </HideOnScroll>

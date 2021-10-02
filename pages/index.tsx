@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { Typography } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
-import OurServices from '@/components/OurServices'
-import { BaseProps, Section } from './interfaces'
+import OurServices from 'components/OurServices'
+import { BaseProps, Section } from 'src/interfaces'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
@@ -16,9 +16,9 @@ interface Props extends BaseProps {
 
 export default function Home(props: Props) {
   const { t } = useTranslation()
-  // const { sections, __lang, __namespaces } = props
+  const { sections, __lang, __namespaces } = props
 
-  // console.log('props', sections, __lang, __namespaces)
+  console.log('props', sections, __lang, __namespaces)
   return (
     <div>
       <Head>
