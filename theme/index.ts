@@ -1,7 +1,7 @@
 import { createTheme, Theme, PaletteOptions } from '@mui/material'
 
 import { red } from '@mui/material/colors'
-import { DIRECTION } from '../constants'
+import { DIRECTION } from 'src/constants'
 
 type PaletteMode = 'dark' | 'light'
 

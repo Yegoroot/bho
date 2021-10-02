@@ -4,7 +4,7 @@ import Document, {
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import theme from '../theme'
-import { DIRECTION } from '../constants'
+import { DIRECTION } from 'src/constants'
 import { DEFAULT_LANG } from '../i18Constants'
 
 // https://mui.com/styles/advanced/#next-js

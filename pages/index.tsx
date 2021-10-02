@@ -7,8 +7,8 @@ import fetch from 'isomorphic-unfetch'
 
 import OurServices from 'components/OurServices'
 import { BaseProps, Section } from 'src/interfaces'
-import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
-import homeImage from '../public/images/home.png'
+import { DESCRIPTION, MAIN_PAGE_TITLE } from 'src/constants'
+import homeImage from 'public/images/home.png'
 
 interface Props extends BaseProps {
   sections: Section[]

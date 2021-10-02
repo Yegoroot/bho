@@ -1,25 +1,25 @@
 import React from 'react'
 import Head from 'next/head'
 
-import { BaseProps, About as AboutProps } from 'src/interfaces'
+import { BaseProps, Section } from 'src/interfaces'
 import { KEYWORDS } from 'src/constants'
 
 interface Props extends BaseProps {
-  about: AboutProps
+  sections: Section[]
 }
 
-export default function About(props: Props): React.ReactElement {
-  const { about } = props
+export default function SectionPage(props: Props): React.ReactElement {
+  const { sections } = props
 
-  console.log(about, 'about props')
+  console.log(sections, 'section props')
   return (
     <>
       <Head>
-        <title>{about.title}</title>
+        {/* <title>{about.title}</title>
         <meta
           name="description"
           content={about.description}
-        />
+        /> */}
         <meta
           name="keywords"
           content={KEYWORDS}
@@ -30,12 +30,7 @@ export default function About(props: Props): React.ReactElement {
         />
       </Head>
       <main>
-        <h1>
-          {about.title}
-        </h1>
-        <div>
-          {about.text}
-        </div>
+        {sections.map((section) => <span>{section.title}</span>)}
       </main>
 
     </>
@@ -45,12 +40,12 @@ export default function About(props: Props): React.ReactElement {
 export async function getStaticProps() {
   const { API_URL } = process.env
 
-  const res = await fetch(`${API_URL}/about`)
-  const about: AboutProps = await res.json()
+  const res = await fetch(`${API_URL}/sections`)
+  const sections: Section[] = await res.json()
 
   return {
     props: {
-      about
+      sections
     },
   }
 }
