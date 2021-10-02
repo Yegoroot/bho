@@ -16,9 +16,9 @@ interface Props extends BaseProps {
 
 export default function Home(props: Props) {
   const { t } = useTranslation()
-  const { sections, __lang, __namespaces } = props
+  // const { sections, __lang, __namespaces } = props
 
-  console.log('props', sections, __lang, __namespaces)
+  // console.log('props', sections, __lang, __namespaces)
   return (
     <div>
       <Head>

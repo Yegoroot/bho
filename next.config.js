@@ -18,6 +18,9 @@ module.exports = nextTranslate(withTM({
   env: {
     API_URL: process.env.API_URL
   },
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
