@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import MainLayout from './Layouts/Main'
+import MainLayout from '../src/layouts/Main'
 import theme from '../theme'
 
 const App = ((props: AppProps) => {

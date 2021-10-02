@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { Typography } from '@mui/material'
-import OurServices from './components/MainPage/OurServices'
+import OurServices from '../src/components/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
@@ -51,6 +52,9 @@ export default function Home() {
   )
 }
 
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line no-unused-vars
 export async function getServerSideProps(context) {
   const { API_URL } = process.env
   console.log('api', API_URL)

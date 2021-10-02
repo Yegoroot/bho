@@ -6,8 +6,7 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { Slide } from '@mui/material'
 
-import MainMenu from './components/Menu'
-import ChangeLanguage from './components/ChangeLanguage'
+import MainMenu from '../components/Menu'
 
 interface Props {
   window?: () => Window;
@@ -40,7 +39,6 @@ const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement =
         <Toolbar>
 
           <MainMenu />
-          <ChangeLanguage />
 
         </Toolbar>
       </AppBar>
