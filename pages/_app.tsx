@@ -3,13 +3,19 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-// import fetch from 'isomorphic-unfetch'
-// import getConfig from 'next/config'
-import MainLayout from '../src/layouts/Main'
+import fetch from 'isomorphic-unfetch'
+import getConfig from 'next/config'
+
+import { Section } from '@/pages/interfaces'
+import MainLayout from '../layouts/Main'
 import theme from '../theme'
 
-const App = ((props: AppProps) => {
-  const { Component, pageProps } = props
+interface Props extends AppProps {
+  sections: Section[]
+}
+
+const App = ((props: Props) => {
+  const { Component, pageProps, sections } = props
   return (
     <>
       <Head>
@@ -25,7 +31,7 @@ const App = ((props: AppProps) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <MainLayout>
+        <MainLayout sections={sections}>
           <Component {...pageProps} />
         </MainLayout>
       </ThemeProvider>
@@ -33,13 +39,13 @@ const App = ((props: AppProps) => {
   )
 })
 
-// const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig()
 
-// App.getInitialProps = async () => {
-//   console.log(`${publicRuntimeConfig.API_URL}/navigations`)
-//   const res = await fetch(`${publicRuntimeConfig.API_URL}/navigations`)
-//   const navigation = await res.json()
-//   return navigation
-// }
+// @ts-ignore
+App.getInitialProps = async () => {
+  const res = await fetch(`${publicRuntimeConfig.API_URL}/sections`)
+  const sections = await res.json()
+  return sections
+}
 
 export default App

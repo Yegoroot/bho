@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-import { BaseProps, About as AboutProps } from './interfaces'
+import { BaseProps, About as AboutProps } from '@/pages/interfaces'
 import { KEYWORDS } from '../constants'
 
 interface Props extends BaseProps {

@@ -5,8 +5,8 @@ import Image from 'next/image'
 import { Typography } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
+import OurServices from '@/components/OurServices'
 import { BaseProps, Section } from './interfaces'
-import OurServices from '../src/components/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 

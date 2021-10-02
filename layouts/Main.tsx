@@ -6,7 +6,8 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { Slide } from '@mui/material'
 
-import MainMenu from '../components/Menu'
+import MainMenu from '@/components/Menu'
+import { Section } from '@/pages/interfaces'
 
 interface Props {
   window?: () => Window;
@@ -14,6 +15,7 @@ interface Props {
 }
 
 interface PropsLayout {
+  sections: Section
   children: React.ReactElement;
 }
 
@@ -32,7 +34,7 @@ function HideOnScroll(props: Props) {
   )
 }
 
-const AppBarLayout = ({ children, ...props }: PropsLayout): React.ReactElement => (
+const AppBarLayout = ({ children, sections, ...props }: PropsLayout): React.ReactElement => (
   <>
     <HideOnScroll {...props}>
       <AppBar>

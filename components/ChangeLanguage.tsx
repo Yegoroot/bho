@@ -4,7 +4,7 @@ import { Menu as MaterialMenu, Box, } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 
 import Router from 'next/router'
-import { DEFAULT_LANG, locales } from '../../i18Constants'
+import { DEFAULT_LANG, locales } from '../i18Constants'
 
 const Menu = () => {
   const [currentLang, setCurrentLang] = useState(DEFAULT_LANG)
