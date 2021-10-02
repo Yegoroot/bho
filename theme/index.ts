@@ -9,16 +9,16 @@ const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
   mode,
   primary: {
     main: '#fff',
-    contrastText: '#000'
+    contrastText: '#232d3c'
   },
   secondary: {
-    main: '#19857b',
+    main: '#232d3c',
   },
   error: {
     main: red.A400,
   },
   background: {
-    default: '#17414e',
+    default: '#232d3c',
   },
   text: {
     primary: '#fff',
@@ -26,7 +26,7 @@ const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
 } : {
   mode,
   primary: {
-    main: '#000',
+    main: '#232d3c',
     contrastText: '#fff'
   },
   // secondary: {

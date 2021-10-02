@@ -2,13 +2,13 @@
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import { Typography } from '@mui/material'
+import { Typography, Grid } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
 import OurServices from 'components/OurServices'
 import { BaseProps, Section } from 'src/interfaces'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from 'src/constants'
-import homeImage from 'public/images/home.png'
+import homeImage from 'public/images/mosque.png'
 
 interface Props extends BaseProps {
   sections: Section[]
@@ -35,10 +35,21 @@ export default function Home(props: Props) {
 
       <main>
 
-        <div>
+        <Grid sx={{
+          display: 'grid',
+          marginTop: 10,
+          gap: 3,
+          gridTemplateColumns: {
+            xs: '1fr',
+            lg: '1fr 1fr'
+          },
+        }}
+        >
 
-          <div>
-            <Typography variant="h1">
+          <Grid>
+            <Typography
+              variant="h1"
+            >
               {t('common:title')}
             </Typography>
             <Typography variant="subtitle1">
@@ -46,13 +57,13 @@ export default function Home(props: Props) {
               Inventore distinctio rerum necessitatibus itaque tempore harum quidem quos culpa!
               Odit aut accusamus at cum molestias saepe sint placeat natus omnis eos.
             </Typography>
-          </div>
+          </Grid>
 
           <Image
             src={homeImage}
             alt={MAIN_PAGE_TITLE}
           />
-        </div>
+        </Grid>
         <OurServices />
 
       </main>
