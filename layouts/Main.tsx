@@ -3,11 +3,12 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import { Slide } from '@mui/material'
+import { Container, Typography, Slide } from '@mui/material'
+
 import Image from 'next/image'
 
 import MenuMain from 'components/MenuMain'
+import Footer from 'components/Footer'
 import MenuSections from 'components/MenuSections'
 import { Section } from 'src/interfaces'
 
@@ -89,18 +90,16 @@ const AppBarLayout = ({ children, sections, ...props }: PropsLayout): React.Reac
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-      <Container>
-        <Box my={2}>
-          {children}
-        </Box>
-      </Container>
-      <div>
-        <ul>
-          <li>---</li>
-          <li>---</li>
-          <li>---</li>
-        </ul>
-      </div>
+      {/* <Container> */}
+      <Box sx={{
+        p: 3
+      }}
+      >
+        {children}
+      </Box>
+      {/* </Container> */}
+      <Footer />
+
     </>
   )
 }
