@@ -3,13 +3,22 @@ import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { Typography } from '@mui/material'
+import fetch from 'isomorphic-unfetch'
+
+import { BaseProps, Section } from './interfaces'
 import OurServices from '../src/components/OurServices'
 import { DESCRIPTION, MAIN_PAGE_TITLE } from '../constants'
 import homeImage from '../public/images/home.png'
 
-export default function Home() {
-  const { t } = useTranslation()
+interface Props extends BaseProps {
+  sections: Section[]
+}
 
+export default function Home(props: Props) {
+  const { t } = useTranslation()
+  const { sections, __lang, __namespaces } = props
+
+  console.log('props', sections, __lang, __namespaces)
   return (
     <div>
       <Head>
@@ -57,8 +66,13 @@ export default function Home() {
 // eslint-disable-next-line no-unused-vars
 export async function getServerSideProps(context) {
   const { API_URL } = process.env
-  console.log('api', API_URL)
+
+  const res = await fetch(`${API_URL}/sections`)
+  const sections = await res.json()
+
   return {
-    props: {}, // will be passed to the page component as props
+    props: {
+      sections
+    },
   }
 }
