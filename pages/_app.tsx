@@ -6,23 +6,31 @@ import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import getConfig from 'next/config'
 
-import { Section } from 'src/interfaces'
+import { Section, General } from 'src/interfaces'
 import MainLayout from '../layouts/Main'
 import theme from '../theme'
 
 interface Props extends AppProps {
-  sections: Section[]
+  sections: Section[],
+  general: General
 }
 
 const App = ((props: Props) => {
-  const { Component, pageProps, sections } = props
+  const {
+    Component, pageProps, sections, general
+  } = props
+
   return (
     <>
       <Head>
-        {/* <title>Next App</title> */}
+        <title>{general.title}</title>
         <link
           href="/favicon.ico"
           rel="icon"
+        />
+        <meta
+          name="description"
+          content={general.description}
         />
         <meta
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -31,7 +39,10 @@ const App = ((props: Props) => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <MainLayout sections={sections}>
+        <MainLayout
+          sections={sections}
+          general={general}
+        >
           <Component {...pageProps} />
         </MainLayout>
       </ThemeProvider>
@@ -43,10 +54,14 @@ const { publicRuntimeConfig } = getConfig()
 
 // @ts-ignore
 App.getInitialProps = async () => {
-  const res = await fetch(`${publicRuntimeConfig.API_URL}/sections`)
-  const sections = await res.json()
+  const resS = await fetch(`${publicRuntimeConfig.API_URL}/sections`)
+  const sections = await resS.json()
+
+  const resG = await fetch(`${publicRuntimeConfig.API_URL}/general`)
+  const general = await resG.json()
   return {
-    sections
+    sections,
+    general
   }
 }
 

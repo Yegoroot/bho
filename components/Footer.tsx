@@ -3,7 +3,15 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
-export default function StickyFooter() {
+import { General } from 'src/interfaces'
+
+interface Props {
+  general : General
+}
+
+export default function StickyFooter(props: Props) {
+  const { general } = props
+  console.log(general)
   return (
 
     <Box
@@ -19,8 +27,11 @@ export default function StickyFooter() {
     >
       <Container maxWidth="sm">
         <Typography variant="body1">
-          Узнать ислам, задать вопрос, решить проблему
+          ©
+          {' '}
+          {general.title}
         </Typography>
+        {general.contacts.map((contact) => contact.link)}
       </Container>
     </Box>
 

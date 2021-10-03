@@ -5,6 +5,7 @@ import getConfig from 'next/config'
 import { Typography } from '@mui/material'
 
 import { Section, Category } from 'src/interfaces'
+import CategoryCard from 'components/CategoryCard'
 
 interface Props {
   section: Section
@@ -13,24 +14,16 @@ interface Props {
 const MyComponent = (props: Props): React.ReactElement => {
   const { section } = props
 
-  const { categories, title } = section
-
-  console.log(section, 'section props')
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{section.title}</title>
       </Head>
 
-      <Typography
-        variant="h1"
-        sx={{ marginTop: 10 }}
-      >
-        {title}
-      </Typography>
-      {
-        categories.map((category: Category) => <span>{category.title}</span>)
-      }
+      <Typography variant="h1">{section.title}</Typography>
+
+      {section.categories.map((category: Category) => <CategoryCard category={category} />) }
+
     </>
   )
 }

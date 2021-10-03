@@ -1,8 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
+import { Typography } from '@mui/material'
 
 import { BaseProps, About as AboutProps } from 'src/interfaces'
-import { KEYWORDS } from 'src/constants'
 
 interface Props extends BaseProps {
   about: AboutProps
@@ -11,7 +11,6 @@ interface Props extends BaseProps {
 export default function About(props: Props): React.ReactElement {
   const { about } = props
 
-  console.log(about, 'about props')
   return (
     <>
       <Head>
@@ -20,22 +19,10 @@ export default function About(props: Props): React.ReactElement {
           name="description"
           content={about.description}
         />
-        <meta
-          name="keywords"
-          content={KEYWORDS}
-        />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-        />
       </Head>
       <main>
-        <h1>
-          {about.title}
-        </h1>
-        <div>
-          {about.text}
-        </div>
+        <Typography variant="h1">{about.title}</Typography>
+        <Typography variant="body1">{about.text}</Typography>
       </main>
 
     </>

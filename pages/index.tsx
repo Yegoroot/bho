@@ -1,89 +1,57 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Head from 'next/head'
-import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { Typography, Grid } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
 import OurServices from 'components/OurServices'
-import { BaseProps, Section } from 'src/interfaces'
-import { DESCRIPTION, MAIN_PAGE_TITLE } from 'src/constants'
+import { BaseProps, General } from 'src/interfaces'
 import homeImage from 'public/images/mosque.png'
 
 interface Props extends BaseProps {
-  sections: Section[]
+  general: General
 }
 
 export default function Home(props: Props) {
-  const { t } = useTranslation()
-  const { sections, __lang, __namespaces } = props
+  const { general } = props
 
-  console.log('props', sections, __lang, __namespaces)
   return (
-    <div>
-      <Head>
-        <title>{MAIN_PAGE_TITLE}</title>
-        <meta
-          name="description"
-          content={DESCRIPTION}
-        />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-        />
-      </Head>
 
-      <main>
+    <main>
 
-        <Grid sx={{
-          display: 'grid',
-          marginTop: 10,
-          gap: 3,
-          gridTemplateColumns: {
-            xs: '1fr',
-            lg: '1fr minmax(auto, 450px)'
-          },
-        }}
-        >
-
-          <Grid>
-            <Typography
-              variant="h1"
-            >
-              {t('common:title')}
-            </Typography>
-            <Typography variant="subtitle1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Inventore distinctio rerum necessitatibus itaque tempore harum quidem quos culpa!
-              Odit aut accusamus at cum molestias saepe sint placeat natus omnis eos.
-            </Typography>
-          </Grid>
-
-          <Image
-            src={homeImage}
-            alt={MAIN_PAGE_TITLE}
-          />
+      <Grid sx={{
+        display: 'grid',
+        gap: 3,
+        gridTemplateColumns: {
+          xs: '1fr',
+          lg: '1fr minmax(auto, 450px)'
+        },
+      }}
+      >
+        <Grid>
+          <Typography variant="h1">{general.title}</Typography>
+          <Typography variant="subtitle1">{general.description}</Typography>
         </Grid>
-        <OurServices />
 
-      </main>
+        <Image
+          src={homeImage}
+          alt={general.title}
+        />
+      </Grid>
+      <OurServices />
 
-    </div>
+    </main>
+
   )
 }
 
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// eslint-disable-next-line no-unused-vars
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const { API_URL } = process.env
 
-  const res = await fetch(`${API_URL}/sections`)
-  const sections: Section[] = await res.json()
+  const res = await fetch(`${API_URL}/general`)
+  const general: General = await res.json()
 
   return {
     props: {
-      sections
+      general
     },
   }
 }

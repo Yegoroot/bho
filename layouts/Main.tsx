@@ -10,7 +10,7 @@ import Image from 'next/image'
 import MenuMain from 'components/MenuMain'
 import Footer from 'components/Footer'
 import MenuSections from 'components/MenuSections'
-import { Section } from 'src/interfaces'
+import { Section, General } from 'src/interfaces'
 
 import LogoDark from 'public/logo-dark.png'
 
@@ -21,6 +21,7 @@ interface Props {
 
 interface PropsLayout {
   sections: Section[]
+  general: General
   children: React.ReactElement;
 }
 
@@ -41,7 +42,9 @@ function HideOnScroll(props: Props) {
   )
 }
 
-const AppBarLayout = ({ children, sections, ...props }: PropsLayout): React.ReactElement => {
+const AppBarLayout = ({
+  children, sections, general, ...props
+}: PropsLayout): React.ReactElement => {
   const [show, setShow] = useState(false)
 
   const handleScroll = () => {
@@ -98,7 +101,7 @@ const AppBarLayout = ({ children, sections, ...props }: PropsLayout): React.Reac
         {children}
       </Box>
       {/* </Container> */}
-      <Footer />
+      <Footer general={general} />
 
     </>
   )

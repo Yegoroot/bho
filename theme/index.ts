@@ -3,6 +3,8 @@ import { createTheme, Theme, PaletteOptions } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { DIRECTION } from 'src/constants'
 
+import { responsiveFontSizes } from '@mui/material/styles'
+
 type PaletteMode = 'dark' | 'light'
 
 const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
@@ -46,7 +48,15 @@ const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
 // Create a theme instance.
 const theme: Theme = createTheme({
   direction: DIRECTION,
-  palette: { ...getPallete('dark') }
+  palette: { ...getPallete('dark') },
+  typography: {
+    // htmlFontSize: 16,
+    h1: {
+      fontSize: 72,
+      marginTop: 80,
+      marginBottom: 24
+    },
+  },
 })
 
-export default theme
+export default responsiveFontSizes(theme)

@@ -2,7 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 
 import { BaseProps, Section } from 'src/interfaces'
-import { KEYWORDS } from 'src/constants'
 
 interface Props extends BaseProps {
   sections: Section[]
@@ -11,7 +10,6 @@ interface Props extends BaseProps {
 export default function SectionPage(props: Props): React.ReactElement {
   const { sections } = props
 
-  console.log(sections, 'section props')
   return (
     <>
       <Head>
@@ -20,16 +18,9 @@ export default function SectionPage(props: Props): React.ReactElement {
           name="description"
           content={about.description}
         /> */}
-        <meta
-          name="keywords"
-          content={KEYWORDS}
-        />
-        <link
-          rel="icon"
-          href="/favicon.ico"
-        />
       </Head>
       <main>
+        {/* <Typography variant="h1">{sections.title}</Typography> */}
         {sections.map((section) => <span key={section.id}>{section.title}</span>)}
       </main>
 

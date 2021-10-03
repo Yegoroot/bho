@@ -19,7 +19,7 @@ type DateRecord = {
 type ContentBase = {
   id: number
   title: string;
-  description: string | null
+  description: string
 }
 
 export type TypeArticle = BaseContent
@@ -42,5 +42,13 @@ export interface Section extends BaseContent {
 
 export interface About extends BaseContent {
   text: string | null
-  description: string // rewrite string | null
+}
+
+type Contact = {
+  type: string
+  icon: string;
+  link: string
+}
+export interface General extends BaseContent {
+  contacts: Contact[]
 }
