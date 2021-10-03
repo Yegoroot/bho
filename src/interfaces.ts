@@ -36,6 +36,7 @@ export interface Category extends BaseContent {
 }
 
 export interface Section extends BaseContent {
+  slug: string;
   categories: Category[]
 }
 

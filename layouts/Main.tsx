@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Box from '@mui/material/Box'
-import { Container, Typography, Slide } from '@mui/material'
+import { Slide } from '@mui/material'
 
 import Image from 'next/image'
 

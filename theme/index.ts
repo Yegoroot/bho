@@ -29,9 +29,9 @@ const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
     main: '#232d3c',
     contrastText: '#fff'
   },
-  // secondary: {
-  //   main: '#19857b',
-  // },
+  secondary: {
+    main: '#19857b',
+  },
   // error: {
   //   main: red.A400,
   // },

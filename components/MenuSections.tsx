@@ -1,8 +1,9 @@
 import useTranslation from 'next-translate/useTranslation'
 import {
-  Button, Box, Menu, Fade
+  Button, Box, Menu, Fade, MenuItem
 } from '@mui/material'
 import React from 'react'
+import Link from 'next/link'
 
 import { Section } from 'src/interfaces'
 
@@ -59,12 +60,19 @@ const MenuSections = (props: Props) :React.ReactElement => {
       >
         <Box sx={{ padding: '20px' }}>
           {sections.map((section) => (
-            <span
+            <Link
+              href="/sections/[slug]"
+              as={`/sections/${section.slug}`}
+              passHref
               key={section.id}
-              style={{ paddingRight: '20px' }}
             >
-              {section.title}
-            </span>
+              <MenuItem
+                onClick={handleClose}
+                key={section.id}
+              >
+                {section.title}
+              </MenuItem>
+            </Link>
           ))}
         </Box>
       </Menu>
