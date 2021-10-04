@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { Typography } from '@mui/material'
+import fetch from 'isomorphic-unfetch'
 
 import { BaseProps, About as AboutProps } from 'src/interfaces'
 

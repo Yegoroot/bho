@@ -1,5 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
+import fetch from 'isomorphic-unfetch'
+import { Typography } from '@mui/material'
 
 import { BaseProps, Section } from 'src/interfaces'
 
@@ -20,8 +22,11 @@ export default function SectionPage(props: Props): React.ReactElement {
         /> */}
       </Head>
       <main>
-        {/* <Typography variant="h1">{sections.title}</Typography> */}
-        {sections.map((section) => <span key={section.id}>{section.title}</span>)}
+        <Typography variant="h1">Разделы</Typography>
+        <ul>
+
+          {sections.map((section) => <li key={section.id}>{section.title}</li>)}
+        </ul>
       </main>
 
     </>

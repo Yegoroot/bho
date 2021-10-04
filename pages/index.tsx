@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { Typography, Grid } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
-import OurServices from 'components/OurServices'
 import { BaseProps, General } from 'src/interfaces'
 import homeImage from 'public/images/mosque.png'
 
@@ -36,7 +35,6 @@ export default function Home(props: Props) {
           alt={general.title}
         />
       </Grid>
-      <OurServices />
 
     </main>
 

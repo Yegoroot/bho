@@ -101,7 +101,7 @@ const AppBarLayout = ({
         {children}
       </Box>
       {/* </Container> */}
-      <Footer general={general} />
+      {/* <Footer general={general} /> */}
 
     </>
   )

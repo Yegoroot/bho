@@ -31,7 +31,8 @@ export interface Article extends BaseContent {
 }
 
 export interface Category extends BaseContent {
-  section: null | Section
+  slug: string;
+  section: Section
   articles: Article[]
 }
 

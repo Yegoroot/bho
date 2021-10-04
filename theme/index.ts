@@ -53,7 +53,7 @@ const theme: Theme = createTheme({
     // htmlFontSize: 16,
     h1: {
       fontSize: 72,
-      marginTop: 80,
+      marginTop: 56,
       marginBottom: 24
     },
   },

@@ -51,9 +51,9 @@ const MenuSections = (props: Props) :React.ReactElement => {
         TransitionComponent={Fade}
         PaperProps={{
           style: {
-            width: '68%',
-            left: '30%',
-            top: '60px'
+            // width: '68%',
+            // left: '30%',
+            // top: '60px'
           },
         }}
 
@@ -61,7 +61,7 @@ const MenuSections = (props: Props) :React.ReactElement => {
         <Box sx={{ padding: '20px' }}>
           {sections.map((section) => (
             <Link
-              href="/sections/[slug]"
+              href="/sections/[sectionSlug]"
               as={`/sections/${section.slug}`}
               passHref
               key={section.id}
