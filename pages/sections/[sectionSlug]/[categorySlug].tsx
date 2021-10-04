@@ -4,13 +4,11 @@ import { NextPageContext } from 'next'
 import getConfig from 'next/config'
 import fetch from 'isomorphic-unfetch'
 import { useRouter } from 'next/router'
-
 import {
   Typography, Tab, Box, Tabs
 } from '@mui/material'
 
 import { Category, Section } from 'src/interfaces'
-// import CategoryCard from 'components/CategoryCard'
 
 interface Props {
   category: Category
@@ -63,7 +61,6 @@ const MyComponent = (props: Props): React.ReactElement => {
           >
             {category.description}
           </Typography>
-          {/* {category.description} */}
         </Box>
 
       </Box>
