@@ -15,6 +15,7 @@ export const MenuSections = (props: Props) :React.ReactElement => {
   const { t } = useTranslation()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
+  const { sections } = props
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
@@ -23,14 +24,11 @@ export const MenuSections = (props: Props) :React.ReactElement => {
     setAnchorEl(null)
   }
 
-  const { sections } = props
-  console.log(sections, 'section')
   return (
     <Box sx={{
       marginLeft: 'auto'
     }}
     >
-
       <Button
         id="fade-button"
         aria-controls="fade-menu"

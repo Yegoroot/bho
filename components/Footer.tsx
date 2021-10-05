@@ -11,11 +11,9 @@ interface Props {
 
 export const Footer = (props: Props) => {
   const { general } = props
-  console.log(general)
-  return (
 
+  return (
     <Box
-        // component="footer"
       sx={{
         py: 3,
         px: 2,

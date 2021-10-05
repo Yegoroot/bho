@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body dir={DIRECTION}>
+        <body dir={DIRECTION.LTR}>
           <Main />
           <NextScript />
         </body>

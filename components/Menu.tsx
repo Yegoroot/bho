@@ -16,7 +16,6 @@ export const Menu = () :React.ReactElement => {
           color="primary"
           style={{ marginRight: '16px' }}
         >
-
           {t('menu:home')}
         </Button>
       </Link>

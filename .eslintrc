@@ -36,6 +36,8 @@
     "airbnb",
   ],
   "rules": {
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/react-in-jsx-scope": "off", // react 17
     "no-use-before-define": "off",
