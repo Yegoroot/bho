@@ -3,7 +3,7 @@ import { Button } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
 
-const MainMenu = () :React.ReactElement => {
+export const Menu = () :React.ReactElement => {
   const { t } = useTranslation()
 
   return (
@@ -32,4 +32,4 @@ const MainMenu = () :React.ReactElement => {
   )
 }
 
-export default MainMenu
+export default Menu

@@ -19,9 +19,10 @@ export default function Home(props: Props) {
       <Grid sx={{
         display: 'grid',
         gap: 3,
+        marginTop: 5,
         gridTemplateColumns: {
           xs: '1fr',
-          lg: '1fr minmax(auto, 450px)'
+          lg: '1fr minmax(auto, 550px)'
         },
       }}
       >

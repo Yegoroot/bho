@@ -22,18 +22,27 @@ type ContentBase = {
   description: string
 }
 
+type Image = {
+  id: number;
+  name: string;
+  url: string
+  // end so
+}
+
 export type TypeArticle = BaseContent
 
 export interface Article extends BaseContent {
   text: string | null
   category: null | Category
   type: null | TypeArticle
+  slug: string
 }
 
 export interface Category extends BaseContent {
   slug: string;
   section: Section
   articles: Article[]
+  image: Image
 }
 
 export interface Section extends BaseContent {

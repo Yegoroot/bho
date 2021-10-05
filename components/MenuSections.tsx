@@ -11,7 +11,7 @@ interface Props {
   sections: Section[]
 }
 
-const MenuSections = (props: Props) :React.ReactElement => {
+export const MenuSections = (props: Props) :React.ReactElement => {
   const { t } = useTranslation()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)

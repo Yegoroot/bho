@@ -4,12 +4,9 @@ import Toolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Box from '@mui/material/Box'
 import { Slide } from '@mui/material'
-
 import Image from 'next/image'
 
-import MenuMain from 'components/MenuMain'
-import Footer from 'components/Footer'
-import MenuSections from 'components/MenuSections'
+import { Menu, MenuSections } from 'components/index'
 import { Section, General } from 'src/interfaces'
 
 import LogoDark from 'public/logo-dark.png'
@@ -87,7 +84,7 @@ const AppBarLayout = ({
                 alt="logo"
               />
             </Box>
-            <MenuMain />
+            <Menu />
             <MenuSections sections={sections} />
           </Toolbar>
         </AppBar>

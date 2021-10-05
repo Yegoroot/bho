@@ -1,5 +1,8 @@
-import { Button } from '@mui/material'
-import Link from 'next/link'
+import {
+  CardContent, Typography, CardMedia, Card,
+  CardActionArea
+} from '@mui/material'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 import { Category, Section } from 'src/interfaces'
@@ -7,25 +10,44 @@ import { Category, Section } from 'src/interfaces'
 interface Props {
   category: Category
   section: Section
+  host: string
 }
 
-const CategoryCard = (props: Props) :React.ReactElement => {
-  const { category, section } = props
-  // console.log(category, 'category')
+export const CategoryCard = (props: Props) :React.ReactElement => {
+  const { category, section, host } = props
+  const router = useRouter()
+
+  const onClick = () => {
+    router.push(`/sections/${section.slug}/${category.slug}`)
+  }
 
   return (
-    <>
 
-      <Link
-        href="/sections/[sectionSlug]/[categorySlug]"
-        as={`/sections/${section.slug}/${category.slug}`}
-        passHref
-      >
-        <Button color="primary">
-          {category.title}
-        </Button>
-      </Link>
-    </>
+    <Card>
+      <CardActionArea onClick={onClick}>
+        <CardMedia
+          component="img"
+          height="170"
+          image={`${host}${category.image.url}`}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
+            {category.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+          >
+            {category.description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+
   )
 }
 

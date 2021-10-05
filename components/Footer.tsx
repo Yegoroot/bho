@@ -9,7 +9,7 @@ interface Props {
   general : General
 }
 
-export default function StickyFooter(props: Props) {
+export const Footer = (props: Props) => {
   const { general } = props
   console.log(general)
   return (
@@ -37,3 +37,5 @@ export default function StickyFooter(props: Props) {
 
   )
 }
+
+export default Footer
