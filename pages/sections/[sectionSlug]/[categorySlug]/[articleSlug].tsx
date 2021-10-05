@@ -14,7 +14,6 @@ interface Props {
 
 const Article = (props: Props): React.ReactElement => {
   const { article } = props
-  console.log(article)
 
   return (
     <>
@@ -47,13 +46,10 @@ const Article = (props: Props): React.ReactElement => {
 const { publicRuntimeConfig } = getConfig()
 
 export async function getServerSideProps(context: NextPageContext) {
-  const { categorySlug, sectionSlug, articleSlug } = context.query
-
-  console.log(categorySlug, sectionSlug, articleSlug)
+  const { articleSlug } = context.query
 
   const resArticles = await fetch(`${publicRuntimeConfig.API_URL}/articles?slug=${articleSlug}`)
   const filteredCategories = await resArticles.json()
-
   const article = filteredCategories[0]
 
   return {
