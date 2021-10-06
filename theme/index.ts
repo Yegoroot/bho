@@ -34,15 +34,15 @@ const getPallete = (mode: PaletteMode): PaletteOptions => (mode === 'dark' ? {
   secondary: {
     main: '#19857b',
   },
-  // error: {
-  //   main: red.A400,
-  // },
-  // background: {
-  //   default: '#17414e',
-  // },
-  // text: {
-  //   primary: '#000',
-  // },
+  error: {
+    main: red.A400,
+  },
+  background: {
+    default: '#fcfcfc',
+  },
+  text: {
+    primary: '#000',
+  },
 })
 
 // Create a theme instance.

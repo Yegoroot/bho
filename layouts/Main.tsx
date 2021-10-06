@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import React, { useState, useEffect } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
-import Box from '@mui/material/Box'
-import { Slide } from '@mui/material'
+import {
+  Box, Theme, Slide, useTheme
+} from '@mui/material'
 import Image from 'next/image'
 
 import { Menu, MenuSections } from 'components/index'
 import { Section, General } from 'src/interfaces'
-
+import { MODE_THEME } from 'src/constants'
 import LogoDark from 'public/logo-dark.png'
+import LogoLight from 'public/logo-light.png'
 
 interface Props {
   window?: () => Window;
@@ -40,8 +43,9 @@ function HideOnScroll(props: Props) {
 }
 
 const AppBarLayout = ({
-  children, sections, general, ...props
+  children, sections, ...props
 }: PropsLayout): React.ReactElement => {
+  const theme = useTheme<Theme>()
   const [show, setShow] = useState(false)
 
   const handleScroll = () => {
@@ -53,20 +57,17 @@ const AppBarLayout = ({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const styles = !show ? {
-    backgroundImage: 'none',
-    boxShadow: 'none'
-  } : {
-    // backgroundImage: 'none',
-  }
-
   return (
     <>
       <HideOnScroll {...props}>
+        {/* @ts-ignore */}
         <AppBar
-          color="secondary"
+          sx={{
+            boxShadow: !show && 'none',
+            backgroundImage: !show && 'none',
+            backgroundColor: (theme: Theme) => theme.palette.background.default,
+          }}
           enableColorOnDark
-          sx={styles}
         >
           <Toolbar>
             <Box
@@ -80,7 +81,7 @@ const AppBarLayout = ({
               }}
             >
               <Image
-                src={LogoDark}
+                src={theme.palette.mode === MODE_THEME.DARK ? LogoDark : LogoLight}
                 alt="logo"
               />
             </Box>
