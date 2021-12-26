@@ -8,9 +8,9 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 
-import { Menu, MenuSections } from 'components/index'
-import { Section, General } from 'src/interfaces'
-import { MODE_THEME } from 'src/constants'
+import { Menu, MenuSections } from 'src/components/index'
+import { Section, General } from 'src/@types/interfaces'
+import { MODE_THEME } from 'src/config'
 import LogoDark from 'public/logo-dark.png'
 import LogoLight from 'public/logo-light.png'
 
@@ -60,8 +60,8 @@ const AppBarLayout = ({
   return (
     <>
       <HideOnScroll {...props}>
-        {/* @ts-ignore */}
         <AppBar
+          // @ts-ignore
           sx={{
             boxShadow: !show && 'none',
             backgroundImage: !show && 'none',

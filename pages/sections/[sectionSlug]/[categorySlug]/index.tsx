@@ -8,8 +8,8 @@ import {
   Typography, Tab, Box, Tabs, Grid
 } from '@mui/material'
 
-import { ArticleCard } from 'components/index'
-import { Category, Section } from 'src/interfaces'
+import { ArticleCard } from 'src/components'
+import { Category, Section } from 'src/@types/interfaces'
 
 interface Props {
   category: Category

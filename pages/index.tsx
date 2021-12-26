@@ -3,7 +3,7 @@ import { Typography, Grid } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
 import homeImage from 'public/images/mosque.png'
-import { BaseProps, General } from 'src/interfaces'
+import { BaseProps, General } from 'src/@types/interfaces'
 
 interface Props extends BaseProps {
   general: General

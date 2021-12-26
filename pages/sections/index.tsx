@@ -3,7 +3,7 @@ import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import { Typography } from '@mui/material'
 
-import { BaseProps, Section } from 'src/interfaces'
+import { BaseProps, Section } from 'src/@types/interfaces'
 
 interface Props extends BaseProps {
   sections: Section[]

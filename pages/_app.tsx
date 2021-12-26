@@ -7,10 +7,10 @@ import getConfig from 'next/config'
 import { AppProps } from 'next/app'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 
-import { Section, General } from 'src/interfaces'
+import { Section, General } from 'src/@types/interfaces'
 import createEmotionCache from 'src/createEmotionCache'
-import MainLayout from '../layouts/Main'
-import theme from '../theme'
+import MainLayout from 'src/layouts/Main'
+import theme from 'src/theme'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()

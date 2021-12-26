@@ -2,7 +2,7 @@ import { createTheme, Theme, PaletteOptions } from '@mui/material'
 import { red } from '@mui/material/colors'
 import { responsiveFontSizes } from '@mui/material/styles'
 
-import { DIRECTION, MODE_THEME } from 'src/constants'
+import { DIRECTION, MODE_THEME } from 'src/config'
 
 type PaletteMode = 'dark' | 'light'
 

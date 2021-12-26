@@ -5,7 +5,7 @@ import {
 import React from 'react'
 import Link from 'next/link'
 
-import { Section } from 'src/interfaces'
+import { Section } from 'src/@types/interfaces'
 
 interface Props {
   sections: Section[]
@@ -78,5 +78,3 @@ export const MenuSections = (props: Props) :React.ReactElement => {
     </Box>
   )
 }
-
-export default MenuSections

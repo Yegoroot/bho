@@ -5,7 +5,7 @@ import {
 import React from 'react'
 import { useRouter } from 'next/router'
 
-import { Article } from 'src/interfaces'
+import { Article } from 'src/@types/interfaces'
 
 interface Props {
   article: Article

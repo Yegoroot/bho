@@ -32,5 +32,3 @@ export const Menu = () :React.ReactElement => {
     </>
   )
 }
-
-export default Menu

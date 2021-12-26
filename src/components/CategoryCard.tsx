@@ -5,7 +5,7 @@ import {
 import { useRouter } from 'next/router'
 import React from 'react'
 
-import { Category, Section } from 'src/interfaces'
+import { Category, Section } from 'src/@types/interfaces'
 
 interface Props {
   category: Category

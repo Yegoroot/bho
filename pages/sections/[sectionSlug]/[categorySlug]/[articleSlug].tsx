@@ -5,7 +5,7 @@ import getConfig from 'next/config'
 import fetch from 'isomorphic-unfetch'
 import { Typography, Box } from '@mui/material'
 
-import { Article as IArticle } from 'src/interfaces'
+import { Article as IArticle } from 'src/@types/interfaces'
 
 interface Props {
   article: IArticle

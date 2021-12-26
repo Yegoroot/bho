@@ -18,7 +18,7 @@ module.exports = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      components: path.join(__dirname, 'components'),
+      components: path.join(__dirname, 'src/components'),
       src: path.join(__dirname, 'src'),
       public: path.join(__dirname, 'public')
     }

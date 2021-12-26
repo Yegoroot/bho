@@ -5,8 +5,8 @@ import getConfig from 'next/config'
 import fetch from 'isomorphic-unfetch'
 import { Typography, Grid } from '@mui/material'
 
-import { Section, Category } from 'src/interfaces'
-import CategoryCard from 'components/CategoryCard'
+import { Section, Category } from 'src/@types/interfaces'
+import { CategoryCard } from 'src/components'
 
 interface Props {
   section: Section

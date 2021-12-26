@@ -4,9 +4,9 @@ import Document, {
 } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 
-import { DIRECTION } from 'src/constants'
+import { DIRECTION } from 'src/config'
 import createEmotionCache from 'src/createEmotionCache'
-import theme from '../theme'
+import theme from 'src/theme'
 
 // https://mui.com/styles/advanced/#next-js
 export default class MyDocument extends Document {
