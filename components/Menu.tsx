@@ -2,6 +2,7 @@ import useTranslation from 'next-translate/useTranslation'
 import { Button } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
+import ChangeLanguage from './ChangeLanguage'
 
 export const Menu = () :React.ReactElement => {
   const { t } = useTranslation()
@@ -27,6 +28,7 @@ export const Menu = () :React.ReactElement => {
           {t('menu:about')}
         </Button>
       </Link>
+      <ChangeLanguage />
     </>
   )
 }

@@ -1,9 +1,8 @@
 import { createTheme, Theme, PaletteOptions } from '@mui/material'
-
 import { red } from '@mui/material/colors'
-import { DIRECTION, MODE_THEME } from 'src/constants'
-
 import { responsiveFontSizes } from '@mui/material/styles'
+
+import { DIRECTION, MODE_THEME } from 'src/constants'
 
 type PaletteMode = 'dark' | 'light'
 

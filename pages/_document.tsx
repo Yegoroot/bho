@@ -2,16 +2,18 @@ import React from 'react'
 import Document, {
   Html, Head, Main, NextScript
 } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import createEmotionServer from '@emotion/server/create-instance'
+
 import { DIRECTION } from 'src/constants'
+import createEmotionCache from 'src/createEmotionCache'
 import theme from '../theme'
-import { DEFAULT_LANG } from '../i18Constants'
 
 // https://mui.com/styles/advanced/#next-js
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang={DEFAULT_LANG && 'ru'}>
+      <Html lang="ru">
+
         <Head>
           {/* PWA primary color */}
           <meta
@@ -22,6 +24,9 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
           />
+          {/* Inject MUI styles first to match with the prepend: true configuration. */}
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          {(this.props as any).emotionStyleTags}
         </Head>
         <body dir={DIRECTION.LTR}>
           <Main />
@@ -32,27 +37,66 @@ export default class MyDocument extends Document {
   }
 }
 
-// https://github.com/vercel/next.js/blob/master/examples/with-styled-components/pages/_document.js
+// `getInitialProps` belongs to `_document` (instead of `_app`),
+// it's compatible with static-site generation (SSG).
 MyDocument.getInitialProps = async (ctx) => {
-  const sheet = new ServerStyleSheet()
+  // Resolution order
+  //
+  // On the server:
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. document.getInitialProps
+  // 4. app.render
+  // 5. page.render
+  // 6. document.render
+  //
+  // On the server with error:
+  // 1. document.getInitialProps
+  // 2. app.render
+  // 3. page.render
+  // 4. document.render
+  //
+  // On the client
+  // 1. app.getInitialProps
+  // 2. page.getInitialProps
+  // 3. app.render
+  // 4. page.render
+
   const originalRenderPage = ctx.renderPage
 
-  try {
-    ctx.renderPage = () => originalRenderPage({
-      enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
-    })
+  // You can consider sharing the same emotion cache between all the SSR requests to speed up performance.
+  // However, be aware that it can have global side effects.
+  const cache = createEmotionCache()
+  const { extractCriticalToChunks } = createEmotionServer(cache)
 
-    const initialProps = await Document.getInitialProps(ctx)
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          {sheet.getStyleElement()}
-        </>
-      ),
-    }
-  } finally {
-    sheet.seal()
+  ctx.renderPage = () => originalRenderPage({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    enhanceApp: (App: any) => function EnhanceApp(props) {
+      return (
+        <App
+          emotionCache={cache}
+          {...props}
+        />
+      )
+    },
+  })
+
+  const initialProps = await Document.getInitialProps(ctx)
+  // This is important. It prevents emotion to render invalid HTML.
+  // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
+  const emotionStyles = extractCriticalToChunks(initialProps.html)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const emotionStyleTags = emotionStyles.styles.map((style: any) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      key={style.key}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ))
+
+  return {
+    ...initialProps,
+    emotionStyleTags,
   }
 }

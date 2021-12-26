@@ -1,27 +1,33 @@
-import * as React from 'react'
+// import * as React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 import getConfig from 'next/config'
+import { AppProps } from 'next/app'
+import { CacheProvider, EmotionCache } from '@emotion/react'
 
 import { Section, General } from 'src/interfaces'
+import createEmotionCache from 'src/createEmotionCache'
 import MainLayout from '../layouts/Main'
 import theme from '../theme'
 
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache()
+
 interface Props extends AppProps {
+  emotionCache?: EmotionCache;
   sections: Section[],
   general: General
 }
 
 const App = ((props: Props) => {
   const {
-    Component, pageProps, sections, general
+    Component, pageProps, sections, general, emotionCache = clientSideEmotionCache
   } = props
 
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>{general.title}</title>
         <link
@@ -46,7 +52,7 @@ const App = ((props: Props) => {
           <Component {...pageProps} />
         </MainLayout>
       </ThemeProvider>
-    </>
+    </CacheProvider>
   )
 })
 

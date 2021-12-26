@@ -16,8 +16,7 @@
     "paths": {
       "components/*": ["./components/*"],
       "src/*": ["./src/*"],
-      "public/*": ["./public/*"],
-      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"] // this mapping is relative to "baseUrl"
+      "public/*": ["./public/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

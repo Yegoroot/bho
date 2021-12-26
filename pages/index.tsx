@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { Typography, Grid } from '@mui/material'
 import fetch from 'isomorphic-unfetch'
 
-import { BaseProps, General } from 'src/interfaces'
 import homeImage from 'public/images/mosque.png'
+import { BaseProps, General } from 'src/interfaces'
 
 interface Props extends BaseProps {
   general: General
